@@ -5,7 +5,7 @@ import { ModeToggle } from "./theme-button";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 w-full  border-b shadow-sm bg-slate-800">
+    <nav className="z-20 fixed top-0 w-full  border-b shadow-sm bg-slate-800">
       <div className="container flex items-center justify-between h-20 px-4 mx-auto">
         {/* Left side - Logo and Title */}
         <div className="flex items-center space-x-3">
