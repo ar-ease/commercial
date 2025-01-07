@@ -44,7 +44,7 @@ export function CategoryShowcase() {
   }, []);
 
   return (
-    <Card className="max-w-md mx-auto overflow-hidden bg-white">
+    <Card className="max-w-md mx-auto overflow-hidden ">
       <div className="relative h-[250px] overflow-hidden">
         {images.map((image, index) => (
           <Image
@@ -60,51 +60,36 @@ export function CategoryShowcase() {
       </div>
 
       <div className="p-8 space-y-6">
-        <h2 className="text-3xl font-bold text-gray-900">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-300">
           {paperCategoryData.name}
         </h2>
 
-        <p className="text-gray-600 text-sm leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
           {paperCategoryData.description}
         </p>
 
         <div className="grid grid-cols-2 gap-4 my-6">
           {paperCategoryData.subcategories.map((subcat) => (
-            <div key={subcat.name} className="p-3 bg-gray-50 rounded-lg">
-              <h3 className="font-semibold text-gray-900">{subcat.name}</h3>
-              <p className="text-sm text-gray-600">{subcat.description}</p>
+            <div
+              key={subcat.name}
+              className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+            >
+              <h3 className="font-semibold text-gray-900 dark:text-gray-400">
+                {subcat.name}
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                {subcat.description}
+              </p>
             </div>
           ))}
         </div>
 
         <div className="flex gap-4 justify-center">
           <Link href="/category/products?category=paper">
-            <Button
-              size="lg"
-              className="relative bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)] 
-                         transition-all duration-300 
-                         hover:shadow-[0_0_25px_rgba(59,130,246,0.8)]"
-            >
+            <Button className="" size="lg">
               View Paper Products
             </Button>
           </Link>
-        </div>
-
-        <div className="mt-6 pt-6 border-t">
-          <h4 className="text-sm font-semibold text-gray-900 mb-2">
-            Key Features:
-          </h4>
-          <ul className="grid grid-cols-2 gap-2">
-            {paperCategoryData.features.map((feature) => (
-              <li
-                key={feature}
-                className="text-sm text-gray-600 flex items-center"
-              >
-                <span className="mr-2">✓</span>
-                {feature}
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </Card>
