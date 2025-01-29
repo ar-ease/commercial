@@ -1,7 +1,11 @@
+"use client";
+import { useAppContext } from "@/context";
 import Tagline from "@/components/tagline";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 export default function Home() {
+  const { state, name, surname } = useAppContext();
+
   return (
     <div className="">
       {" "}
@@ -15,6 +19,10 @@ export default function Home() {
             Browse products
           </Button>
         </Link>
+        {state.hello}
+
+        {name}
+        {surname}
       </div>
     </div>
   );

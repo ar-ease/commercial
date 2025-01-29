@@ -3,7 +3,9 @@ import prisma from "@/lib/prisma";
 
 export async function POST(request: Request) {
   try {
+    console.log("hello there");
     const body = await request.json();
+    console.log(body);
 
     // Validate the required fields
     if (!body.name || !body.productType) {
@@ -12,12 +14,19 @@ export async function POST(request: Request) {
         { status: 400 },
       );
     }
+    const validProductTypes = ["PAPER", "BOARD"];
+
+    if (!validProductTypes.includes(body.productType)) {
+      return NextResponse.json(
+        { error: "Invalid productType. Must be one of PAPER or BOARD." },
+        { status: 400 },
+      );
+    }
 
     // Create the product
     const product = await prisma.product.create({
       data: {
         name: body.name,
-        description: body.description,
         image: body.image || "unknown",
         productType: body.productType,
         available: body.available || "INSTOCK",

@@ -50,6 +50,7 @@ export function CategoryShowcase() {
           <Image
             key={image}
             src={image}
+            sizes="(max-width: 640px) 100vw, 640px"
             alt={`Paper showcase ${index + 1}`}
             fill
             className={`object-cover transition-opacity duration-1000 ${
@@ -85,7 +86,7 @@ export function CategoryShowcase() {
         </div>
 
         <div className="flex gap-4 justify-center">
-          <Link href="/category/products?category=paper">
+          <Link href="/products?category=paper">
             <Button className="" size="lg">
               View Paper Products
             </Button>

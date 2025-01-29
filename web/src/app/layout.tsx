@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@/components/theme-provider";
+import { AppWrapper } from "@/context/index";
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -35,7 +36,7 @@ export default function RootLayout({
           <div className="pb-20">
             <Navbar />
           </div>
-          {children}
+          <AppWrapper>{children}</AppWrapper>
         </ThemeProvider>
       </body>
     </html>
