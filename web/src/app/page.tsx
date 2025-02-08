@@ -3,6 +3,7 @@ import { useAppContext } from "@/context";
 import Tagline from "@/components/tagline";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Appbar } from "@/components/appbar";
 export default function Home() {
   const { state, name, surname } = useAppContext();
 
@@ -23,6 +24,8 @@ export default function Home() {
 
         {name}
         {surname}
+
+        <Appbar />
       </div>
     </div>
   );

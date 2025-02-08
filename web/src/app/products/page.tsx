@@ -1,5 +1,5 @@
 "use client";
-import altCard1 from "@/components/altCard1";
+//import altCard1 from "@/components/altCard1";
 import ProductCard from "@/components/productCard";
 
 import { useEffect, useState } from "react";

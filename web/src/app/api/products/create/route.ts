@@ -1,8 +1,19 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../auth/[...nextauth]/route";
 
 export async function POST(request: Request) {
   try {
+    const session = await getServerSession(authOptions);
+    // Check if user is authenticated and is an admin
+    if (!session?.user?.isAdmin) {
+      return NextResponse.json(
+        { error: "Unauthorized. Admin access required." },
+        { status: 403 }
+      );
+    }
+
     console.log("hello there");
     const body = await request.json();
     console.log(body);
@@ -11,7 +22,7 @@ export async function POST(request: Request) {
     if (!body.name || !body.productType) {
       return NextResponse.json(
         { error: "Name and productType are required" },
-        { status: 400 },
+        { status: 400 }
       );
     }
     const validProductTypes = ["PAPER", "BOARD"];
@@ -19,7 +30,7 @@ export async function POST(request: Request) {
     if (!validProductTypes.includes(body.productType)) {
       return NextResponse.json(
         { error: "Invalid productType. Must be one of PAPER or BOARD." },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -37,8 +48,8 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Error creating product:", error);
     return NextResponse.json(
-      { error: "Error creating product" },
-      { status: 500 },
+      { error: "Failed to create product. Please try again later." },
+      { status: 500 }
     );
   }
 }

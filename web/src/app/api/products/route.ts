@@ -20,7 +20,7 @@ export async function GET(request: Request) {
     if (!allProducts.length) {
       return NextResponse.json(
         { message: "No products found" },
-        { status: 404 },
+        { status: 404 }
       );
     }
     return NextResponse.json(
@@ -28,12 +28,12 @@ export async function GET(request: Request) {
         products: allProducts,
         count: allProducts.length,
       },
-      { status: 200 },
+      { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
       { error: "not able to fetch products" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
